@@ -1,8 +1,11 @@
 version: 2.1
-jobs:
-  build:
+executors:
+  node:
     docker:
       - image: circleci/node:12
+jobs:
+  build:
+    executor: node
     steps:
       - checkout
       - restore_cache:
@@ -15,8 +18,7 @@ jobs:
           paths:
             - ./node_modules
   test:
-    docker:
-      - image: circleci/node:12
+    executor: node
     steps:
       - checkout
       - restore_cache:
