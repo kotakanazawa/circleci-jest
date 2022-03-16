@@ -1,5 +1,4 @@
 version: 2.1
-
 jobs:
   build:
     docker:
@@ -7,24 +6,22 @@ jobs:
     steps:
       - checkout
       - run:
-        name: install dependencies
-        command: yarn install
-
+          name: install dependencies
+          command: yarn install
   test:
     docker:
       - image: circleci/node:12
     steps:
       - checkout
       - run:
-        name: install dependencies
-        command: yarn install
+          name: install dependencies
+          command: yarn install
       - run:
-        name: unit test
-        command: yarn test
-
+          name: unit test
+          command: yarn test
 workflows:
   version: 2
   build_and_test:
     jobs:
       - build
-      - test 
+      - test
